@@ -215,6 +215,10 @@ footer{background:#3a4a26;color:#c3d3a3;text-align:center;padding:28px 20px;font
   .near{grid-template-columns:1fr}
 }
 @media(max-width:520px){.grid,.gal,.qlink{grid-template-columns:1fr}}
+.jewel-strip{background:linear-gradient(180deg,#14111a,#221c2c);padding:34px 20px;display:flex;flex-direction:column;align-items:center;gap:10px}
+.jewel-strip .jw-cap{color:#e7dcc8;font-size:13px;letter-spacing:.14em;text-transform:uppercase;opacity:.75}
+.jewel-strip jewel-slideshow{width:100%;max-width:360px;height:640px;border-radius:18px;overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,.45);display:block}
+@media(max-width:480px){.jewel-strip jewel-slideshow{height:560px}}
 </style>
 </head>
 <body>
@@ -270,6 +274,20 @@ footer{background:#3a4a26;color:#c3d3a3;text-align:center;padding:28px 20px;font
     <div class="burger" onclick="document.getElementById('menu').classList.toggle('open')">☰</div>
   </div>
 </header>
+
+<!-- 보석 프레임 슬라이드쇼 (로고 바로 아래) -->
+<div class="jewel-strip">
+  <div class="jw-cap">Precious Moments · 오션힐의 순간들</div>
+  <jewel-slideshow shapes='["rounded","diamond","hexagon","oval","flower","oval"]'>
+    <img src="images/img1.jpg" alt="해변 불꽃놀이">
+    <img src="images/img2.jpg" alt="패러세일링">
+    <img src="images/img5.jpg" alt="족구 경기">
+    <img src="images/img9.jpg" alt="노을 조형물">
+    <img src="images/img6.jpg" alt="키즈 워터파크">
+    <img src="images/img4.jpg" alt="숲길 산책로">
+  </jewel-slideshow>
+</div>
+<script src="jewel-slideshow.js"></script>
 
 <main>
 <!-- ================= HOME ================= -->
