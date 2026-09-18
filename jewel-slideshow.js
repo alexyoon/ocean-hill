@@ -470,8 +470,12 @@
       svg.appendChild(defs);
 
       const g = make('g', { 'clip-path': 'url(#clip' + id + ')' });
+      // NOTE: the Ken-Burns pan/zoom transform is intentionally disabled (--kb: 0s).
+      // Animating `transform` on an element inside an SVG clip-path causes iOS/mobile
+      // Safari to fail to paint the clipped photo (frame renders, image stays blank).
+      // Keeping the duration at 0s renders the photo statically but reliably on all devices.
       const kb = make('g', { class: 'kb v' + (this._uid % 4) });
-      kb.style.setProperty('--kb', (this._reduced ? 0 : dur / 1000) + 's');
+      kb.style.setProperty('--kb', '0s');
       const img = make('image', { x: -12, y: -12, width: 224, height: 224, preserveAspectRatio: 'xMidYMid slice' });
       img.setAttributeNS(XLINKNS, 'href', src);
       img.setAttribute('href', src);
