@@ -274,7 +274,6 @@ footer{background:#3a4a26;color:#c3d3a3;text-align:center;padding:28px 20px;font
     <div class="burger" onclick="document.getElementById('menu').classList.toggle('open')">☰</div>
   </div>
 </header>
-<script src="jewel-slideshow.js"></script>
 
 <main>
 <!-- ================= HOME ================= -->
@@ -761,5 +760,10 @@ function adminLogout(){
   showPage('home');
 }
 </script>
+<!-- jewel-slideshow.js는 반드시 <jewel-slideshow> 마크업(및 그 안의 <img> 목록)보다
+     뒤에 위치해야 합니다. 그래야 커스텀 엘리먼트가 정의되는 시점에 이미지 자식
+     노드가 모두 파싱된 상태라 실제 사진으로 초기화되고, 데모(연습용) 사진으로
+     대체되는 문제가 생기지 않습니다. -->
+<script src="jewel-slideshow.js"></script>
 </body>
 </html>
