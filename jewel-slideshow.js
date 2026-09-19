@@ -314,7 +314,10 @@
 
     connectedCallback() {
       const $ = (s) => this._root.querySelector(s);
-      this._reduced = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+      // 항상 "reduced" 모드로 고정: 반짝이는 파티클, 테두리 보석 애니메이션(gemA/gemB/band)이
+      // 끊임없이(infinite) 돌면서 모바일 사파리에서 GPU/메모리 부담이 누적되어 반복적으로
+      // 탭이 죽는("문제가 반복적으로 발생했습니다") 원인이 되었습니다. 항상 꺼서 안정성을 높입니다.
+      this._reduced = true;
       this.classList.toggle('reduced', this._reduced);
 
       this._el = {
@@ -612,7 +615,7 @@
       if (window.matchMedia) {
         const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
         mq.addEventListener && mq.addEventListener('change', (ev) => {
-          this._reduced = ev.matches;
+          this._reduced = true; // 항상 reduced 유지 (위 connectedCallback 설명 참고)
           this.classList.toggle('reduced', this._reduced);
           this._buildSparkles();
         });

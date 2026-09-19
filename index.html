@@ -3,6 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- 카카오톡 인앱 브라우저 등이 페이지를 오래 캐시해서 옛날 버전(사진 안 보이던 버전)을
+     계속 보여주는 문제를 막기 위한 캐시 방지 태그 -->
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<script>
+/* 카카오톡 인앱 브라우저로 열리면 자동으로 기본 브라우저(사파리/크롬)로 새로 열어서,
+   카카오톡 자체 캐시 때문에 이미지가 안 보이는 문제를 근본적으로 피합니다. */
+(function(){
+  var ua = navigator.userAgent || '';
+  if (/KAKAOTALK/i.test(ua)) {
+    location.href = 'kakaotalk://web/openExternal?url=' + encodeURIComponent(location.href);
+  }
+})();
+</script>
 <title>오션힐 펜션 — 바다와 산, 그 사이의 쉼</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -764,6 +779,6 @@ function adminLogout(){
      뒤에 위치해야 합니다. 그래야 커스텀 엘리먼트가 정의되는 시점에 이미지 자식
      노드가 모두 파싱된 상태라 실제 사진으로 초기화되고, 데모(연습용) 사진으로
      대체되는 문제가 생기지 않습니다. -->
-<script src="jewel-slideshow.js"></script>
+<script src="jewel-slideshow.js?v=20260919b"></script>
 </body>
 </html>
